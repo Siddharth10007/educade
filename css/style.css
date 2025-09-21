@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --primary-bg: #0a041a;
+    --primary-text: #e0e0e0;
+    --accent-cyan: #00ffff;
+    --accent-magenta: #ff00ff;
+    --accent-green: #00ff8a;
+    --card-bg: rgba(20, 10, 50, 0.7);
+    --border-glow: 0 0 5px var(--accent-cyan), 0 0 10px var(--accent-cyan), 0 0 15px var(--accent-cyan);
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    text-shadow: 0 0 8px var(--accent-magenta);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+/* --- HOME PAGE --- */
+.home-body {
+    justify-content: center;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    margin-bottom: 3rem;
+}
+
+.role-selection {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.role-card {
+    background: var(--card-bg);
+    border: 2px solid var(--accent-cyan);
+    border-radius: 15px;
+    padding: 2rem;
+    width: 300px;
+    max-width: 90%;
+    text-align: center;
+    text-decoration: none;
+    color: var(--primary-text);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.role-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--border-glow);
+}
+
+.role-card h2 { color: var(--accent-cyan); }
+.role-card p { color: #ccc; }
+
+/* --- LOGIN PAGE --- */
+.login-form-container {
+    background: var(--card-bg);
+    border: 2px solid var(--accent-magenta);
+    border-radius: 15px;
+    padding: 2rem 3rem;
+    width: 450px;
+    max-width: 95%;
+    margin: auto;
+    backdrop-filter: blur(5px);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--accent-magenta);
+    border-radius: 5px;
+    color: var(--primary-text);
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--accent-magenta);
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: var(--accent-cyan);
+    color: var(--primary-bg);
+    box-shadow: var(--border-glow);
+}
+
+.btn.btn-secondary {
+    border-color: var(--accent-magenta);
+    color: var(--accent-magenta);
+    padding: 0.5rem 1rem;
+    width: auto;
+    font-size: 0.9rem;
+}
+.btn.btn-secondary:hover {
+    background: var(--accent-magenta);
+    box-shadow: 0 0 10px var(--accent-magenta);
+}
+
+
+.error-message {
+    color: #ff4d4d;
+    text-align: center;
+    margin-top: 1rem;
+    height: 1.2em;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--accent-cyan);
+    text-decoration: none;
+}
+
+/* --- DASHBOARDS --- */
+.dashboard-header {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--card-bg);
+    border-bottom: 2px solid var(--accent-cyan);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+/* --- ADD THESE NEW STYLES --- */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    border: 2px solid var(--accent-cyan);
+}
+/* --- END OF NEW STYLES --- */
+
+
+.user-info, .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.xp-meter {
+    width: 200px;
+    height: 25px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    border: 1px solid var(--accent-cyan);
+    position: relative;
+    overflow: hidden;
+}
+
+.xp-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-magenta), var(--accent-cyan));
+    border-radius: 20px;
+    transition: width 0.5s ease-in-out;
+}
+
+.xp-meter #xp-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 1400px;
+    /* --- ADD THESE NEW STYLES TO CENTER THE CONTENT --- */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- ADD THIS NEW STYLE FOR THE MAIN HEADING --- */
+.main-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+
+/* Teacher Dashboard */
+#teacher-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.student-status-card {
+    background: var(--card-bg);
+    border: 1px solid var(--accent-magenta);
+    border-radius: 10px;
+    padding: 1.5rem;
+    backdrop-filter: blur(5px);
+}
+.student-status-card h3 { color: var(--accent-cyan); }
+.status-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+.status-tag.on-track { background-color: #00ff8a; color: #000; }
+.status-tag.needs-practice { background-color: #ffc107; color: #000; }
+.student-status-card ul {
+    list-style-type: none;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+.student-status-card ul li { margin-bottom: 0.3rem; }
+
+/* Student Dashboard */
+.grade-selector select {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--accent-cyan);
+    color: var(--primary-text);
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.planet-grid {
+    display: grid;
+    width: 100%;
+    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.planet-card {
+    background: var(--card-bg);
+    border: 2px solid var(--accent-cyan);
+    border-radius: 15px;
+    text-align: center;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+.planet-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid var(--accent-cyan);
+    box-shadow: 0 0 15px var(--accent-cyan);
+}
+.planet-card h3 { color: var(--accent-cyan); }
+.planet-card .mission-btn { width: 80%; }
+
+.planet-card.locked {
+    filter: grayscale(1);
+    border-color: #555;
+}
+.planet-card.locked img {
+    border-color: #555;
+    box-shadow: none;
+}
+.planet-card.locked .mission-btn {
+    pointer-events: none;
+    background-color: #333;
+    border-color: #555;
+    color: #777;
+}
+.planet-card.unlocked:hover {
+    transform: scale(1.05);
+    box-shadow: var(--border-glow);
+}
+
+/* --- LEADERBOARD --- */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.leaderboard-table th, .leaderboard-table td {
+    padding: 1rem;
+    text-align: left;
+}
+.leaderboard-table thead {
+    background-color: rgba(0, 255, 255, 0.2);
+    font-family: var(--font-heading);
+}
+.leaderboard-table tbody tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.05);
+}
+
+/* --- GAME PAGE --- */
+.game-container {
+    width: 100%;
+    max-width: 900px;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid var(--accent-cyan);
+}
+
+#game-area {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* --- ADD THESE NEW STYLES --- */
+.game-instructions {
+    font-size: 1.1rem;
+    color: var(--accent-cyan);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.question-container {
+    background: rgba(0,0,0,0.2);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.question-text {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.answer-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.btn-answer {
+    width: 45%; /* Two buttons per row on larger screens */
+    min-width: 200px;
+}
+
+.game-input {
+    width: 70%;
+    padding: 0.8rem;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--accent-magenta);
+    border-radius: 5px;
+    color: var(--primary-text);
+    font-size: 1rem;
+}
+
+.game-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--accent-magenta);
+}
+
+.answer-container #submit-answer {
+    width: 25%;
+}
+
+.feedback-container {
+    height: 1.5em;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/* --- ADD THIS NEW STYLE FOR THE GAME IMAGE --- */
+.game-image {
+    max-width: 80%;
+    max-height: 250px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border: 2px solid var(--accent-cyan);
+}
+/* --- END OF NEW STYLE --- */
+
+
+/* --- MODAL --- */
+.modal {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--primary-bg);
+    padding: 3rem;
+    border: 2px solid var(--accent-green);
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px var(--accent-green);
+}
+.modal-content h2 { color: var(--accent-green); }
+.modal-content .btn { margin-top: 1.5rem; }
+

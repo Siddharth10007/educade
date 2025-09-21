@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="icon" type="image/png" href="logo-ed.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="logo-container">
+            <img src="logo-ed.png" alt="Educade Logo" class="header-logo">
+            <h1>Educade</h1>
+        </div>
+        <div class="grade-selector">
+            <label for="grade-select">Grade:</label>
+            <select id="grade-select">
+                <option value="5">Grade 5</option>
+                <option value="6" selected>Grade 6</option>
+                <option value="7">Grade 7</option>
+                <option value="8">Grade 8</option>
+            </select>
+        </div>
+        <div class="user-profile">
+            <a href="student_leaderboard.html" class="nav-link">Leaderboard</a>
+            <div class="user-info">
+                <span id="student-name"></span>
+                <span id="student-rank"></span>
+            </div>
+            <div class="xp-meter">
+                <div id="xp-bar" class="xp-bar-fill"></div>
+                <span id="xp-text"></span>
+            </div>
+            <button id="logout-btn" class="btn btn-secondary">Logout</button>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <h1 class="main-heading">Welcome to the STEM-verse Adventure</h1>
+        <h2>Planet Selection</h2>
+        <div class="planet-grid">
+            <div class="planet-card locked" id="planet-bio-prime">
+                <img src="bio-prime.png" alt="Bio-Prime Planet">
+                <h3>Bio-Prime</h3>
+                <a href="game_page.html?planet=bio-prime" class="btn mission-btn">Start Mission</a>
+            </div>
+            <div class="planet-card locked" id="planet-tech-nova">
+                <img src="tech-nova.png" alt="Tech-Nova Planet">
+                <h3>Tech-Nova</h3>
+                <a href="game_page.html?planet=tech-nova" class="btn mission-btn">Start Mission</a>
+            </div>
+            <div class="planet-card locked" id="planet-engi-mech">
+                <img src="engi-mech.png" alt="Engi-Mech Planet">
+                <h3>Engi-Mech</h3>
+                <a href="game_page.html?planet=engi-mech" class="btn mission-btn">Start Mission</a>
+            </div>
+            <div class="planet-card locked" id="planet-numeria">
+                <img src="numeria.png" alt="Numeria Planet">
+                <h3>Numeria</h3>
+                <a href="game_page.html?planet=numeria" class="btn mission-btn">Start Mission</a>
+            </div>
+        </div>
+    </main>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
