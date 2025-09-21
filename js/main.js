@@ -264,13 +264,18 @@ function checkAnswer(selectedAnswer) {
     const correctAnswer = currentGameData.questions[currentQuestionIndex].correct;
 
     if (selectedAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        
         feedbackEl.textContent = "Correct!";
         feedbackEl.style.color = 'var(--accent-green)';
         currentQuestionIndex++;
+        correct();
+        
         setTimeout(loadGameUI, 1000);
     } else {
+        
         feedbackEl.textContent = "Try Again!";
         feedbackEl.style.color = '#ff4d4d';
+        wrong();
     }
 }
 
@@ -339,3 +344,138 @@ function awardXp(user, amount) {
     modal.style.display = 'flex';
 }
 
+//cursor
+  const folder = "cursor1";  
+  const frameCount = 3; 
+  
+  const frames = [];
+
+  for (let i = 1; i <= frameCount; i++) {
+    frames.push(`${folder}/frame${i}.png`);
+  }
+
+  let index = 0;
+  const fps = 10;
+
+  setInterval(() => {
+    document.body.style.cursor =
+     `url(${frames[index]}), auto`;
+    index = (index + 1) % frames.length;
+  }, 200);
+
+
+//  finial animation
+
+
+const rocket = document.getElementById('rocket');
+const finalSparkle = document.getElementById('finalSparkle');
+const blastEffect = document.getElementById('blastEffect');
+const winSound = document.getElementById('winSound');
+const blastSound = document.getElementById('blastSound');
+
+function createSparkle(x, y) {
+  const sparkle = document.createElement('div');
+  sparkle.classList.add('sparkle');
+  sparkle.style.left = (x - 15) + 'px';
+  sparkle.style.bottom = (y - 15) + 'px';
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 500);
+}
+
+function correct() {
+  let start = null;
+  rocket.style.bottom = '0px';
+  rocket.style.left = '0px';
+  finalSparkle.style.display = 'none';
+
+  winSound.currentTime = 0;
+  winSound.play();
+
+  function animate(time) {
+    if (!start) start = time;
+    let progress = (time - start) / 5000;
+    if (progress > 1) progress = 1;
+
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const x = screenWidth * progress;
+    const y = screenHeight * (0.5 - 0.5 * Math.cos(progress * Math.PI));
+
+    rocket.style.left = x + 'px';
+    rocket.style.bottom = y + 'px';
+
+    if (Math.random() < 0.3) createSparkle(x, y);
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      finalSparkle.style.left = (screenWidth - 150) + 'px';
+      finalSparkle.style.bottom = (screenHeight - 150) + 'px';
+      finalSparkle.style.display = 'block';
+      setTimeout(() => finalSparkle.style.display = 'none', 2000);
+
+      winSound.pause();
+      winSound.currentTime = 0;
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+function wrong() {
+  let start = null;
+  rocket.style.bottom = '0px';
+  rocket.style.left = '0px';
+  blastEffect.style.opacity = 0;
+
+  blastSound.currentTime = 0;
+  blastSound.play();
+
+  function animate(time) {
+    if (!start) start = time;
+    let progress = (time - start) / 3000;
+    if (progress > 1) progress = 1;
+
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    let x, y;
+    if (progress < 0.5) {
+      x = screenWidth * progress;
+      y = screenHeight * (0.5 - 0.5 * Math.cos(progress * Math.PI));
+    } else {
+      x = screenWidth * 0.5;
+      y = screenHeight * (1 - progress);
+    }
+
+    rocket.style.left = x + 'px';
+    rocket.style.bottom = y + 'px';
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      // Blast animation
+      blastEffect.style.left = (x - 75) + 'px';
+      blastEffect.style.bottom = (y - 75) + 'px';
+      blastEffect.style.width = '0px';
+      blastEffect.style.height = '0px';
+      blastEffect.style.opacity = 1;
+      blastEffect.style.transition = 'all 0.6s ease-out';
+      setTimeout(() => {
+        blastEffect.style.width = '150px';
+        blastEffect.style.height = '150px';
+        blastEffect.style.opacity = 0;
+      }, 10);
+      setTimeout(() => {
+        blastEffect.style.transition = '';
+        blastEffect.style.width = '0px';
+        blastEffect.style.height = '0px';
+      }, 700);
+
+      blastSound.pause();
+      blastSound.currentTime = 0;
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
