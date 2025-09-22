@@ -490,3 +490,109 @@ h1, h2, h3 {
 .modal-content h2 { color: var(--accent-green); }
 .modal-content .btn { margin-top: 1.5rem; }
 
+.nav-link{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+
+input[type="text"],
+    input[type="password"] {
+      width: 280px;
+      height: 50px;
+      border: none;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 16px;
+      color: #00eaff; /* neon text */
+      outline: none;
+
+      /* Dark inside */
+      background: #050510;
+
+      /* Neon gradient border */
+      border: 3px solid transparent;
+      background-image: linear-gradient(#050510, #050510),
+        linear-gradient(270deg, #00eaff, #0077ff, #00eaff);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      background-size: 300% 300%;
+
+      /* Glow effect */
+      box-shadow: 0 0 12px rgba(0, 234, 255, 0.7),
+                  0 0 25px rgba(0, 119, 255, 0.5);
+
+      animation: neonBorder 5s ease infinite;
+    }
+
+    input::placeholder {
+      color: #66e0ff;
+      opacity: 0.7;
+    }
+
+    @keyframes neonBorder {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    /* win animation */
+
+ 
+ #rocket {
+    position: absolute;
+    width: 80px;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+  }
+
+  /* Sparkle trail effect */
+  .sparkle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    background: url('https://i.postimg.cc/dQwX5xFf/sparkle.gif') no-repeat center center;
+    background-size: contain;
+    z-index: 20;
+    animation: sparkleAnim 0.5s linear forwards;
+  }
+
+  @keyframes sparkleAnim {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(2); }
+  }
+
+  #finalSparkle {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    pointer-events: none;
+    display: none;
+    background: url('https://i.postimg.cc/dQwX5xFf/sparkle.gif') no-repeat center center;
+    background-size: contain;
+    z-index: 25;
+  }
+
+  /* Blast effect styling */
+  #blastEffect {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffdd00 0%, #ff8800 50%, transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 30;
+  }
+
+  
+
