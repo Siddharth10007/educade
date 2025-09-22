@@ -1,15 +1,15 @@
 // --- DUMMY DATA --- //
 
 const teachers = [
-    { name: "Kohli", password: "test10000" }
+    { name: "teacher", password: "teacher123" }
 ];
 
 // This is the default student data, used only if no data exists in storage.
 const defaultStudents = [
-    { name: "Sid", password: "123", xp: 75, rank: "Space Cadet" },
-    { name: "Rut", password: "123", xp: 280, rank: "Cosmic Commander" },
-    { name: "Raj", password: "123", xp: 510, rank: "Galactic Admiral" },
-    { name: "San", password: "123", xp: 150, rank: "Star Navigator" }
+    { name: "student1", password: "123", xp: 75, rank: "Space Cadet" },
+    { name: "student2", password: "123", xp: 280, rank: "Cosmic Commander" },
+    { name: "student3", password: "123", xp: 510, rank: "Galactic Admiral" },
+    { name: "student4", password: "123", xp: 150, rank: "Star Navigator" }
 ];
 
 // --- STUDENT DATA PERSISTENCE --- //

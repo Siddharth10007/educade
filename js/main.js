@@ -111,15 +111,41 @@ function initLoginPage() {
     });
 }
 
+// A helper object to map ranks to specific content
+const teacherDashboardContent = {
+    "Space Cadet": {
+        completed: `<li>Bio-Prime Mission</li>`,
+        focus: `<li>Numeria: Basic Algebra</li><li>Tech-Nova: Logic Gates</li>`
+    },
+    "Star Navigator": {
+        completed: `<li>Bio-Prime Mission</li><li>Numeria Challenge</li>`,
+        focus: `<li>Engi-Mech: Simple Machines</li><li>Tech-Nova: Advanced Components</li>`
+    },
+    "Cosmic Commander": {
+        completed: `<li>Bio-Prime Mission</li><li>Numeria Challenge</li><li>Engi-Mech Mission</li>`,
+        focus: `<li>Tech-Nova: Circuit Design</li>`
+    },
+    "Galactic Admiral": {
+        completed: `<li>All Grade 6 Missions Completed</li>`,
+        focus: `<li>Advanced STEM Concepts</li>`
+    }
+};
+
 function initTeacherDashboard() {
     const user = checkAuth('teacher');
     document.getElementById('teacher-name').textContent = `Welcome, ${user.name}`;
 
     const grid = document.getElementById('teacher-dashboard-grid');
     const allStudents = getStudents(); // Get latest student data from storage
+    grid.innerHTML = ''; // Clear the grid to prevent duplicate entries
+
     allStudents.forEach(student => {
         const statusClass = student.xp > 200 ? 'on-track' : 'needs-practice';
         const statusText = student.xp > 200 ? 'On Track' : 'Needs Practice';
+        
+        // Get dynamic content based on the student's rank, with a safe fallback
+        const content = teacherDashboardContent[student.rank] || { completed: '<li>N/A</li>', focus: '<li>N/A</li>' };
+
         const card = `
             <div class="student-status-card">
                 <h3>${student.name} <span class="status-tag ${statusClass}">${statusText}</span></h3>
@@ -127,12 +153,11 @@ function initTeacherDashboard() {
                 <p><strong>XP:</strong> ${student.xp}</p>
                 <h4>Completed Activities:</h4>
                 <ul>
-                    <li>Bio-Prime Mission</li>
-                    <li>Numeria Challenge</li>
+                    ${content.completed}
                 </ul>
                 <h4>Subjects to Focus On:</h4>
                 <ul>
-                    <li>Tech-Nova: Logic Gates</li>
+                    ${content.focus}
                 </ul>
             </div>
         `;
